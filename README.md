@@ -32,7 +32,12 @@ Decrypt a single database-encrypted password:
 
 ## Dumper
 
-TO-DO
+### Installation
+
+```bash
+sudo apt-get -y install libpq-dev
+pip3 install -r requirements.txt
+```
 
 ## PostgreSQL
 
