@@ -39,6 +39,20 @@ sudo apt-get -y install libpq-dev
 pip3 install -r requirements.txt
 ```
 
+### Examples
+
+Dump all passwords for default DB creds (`postgres:postgres@127.0.0.1:2345/PassTrix`):
+
+```bash
+./dumper.py -k XcLyN2ycqDkgHUwCh7ABPDfDCQXMspN2PwLr2LEjfCg=
+```
+
+Test if you have the right key:
+
+```bash
+./dumper.py -k XcLyN2ycqDkgHUwCh7ABPDfDCQXMspN2PwLr2LEjfCg= -c test
+```
+
 ## PostgreSQL
 
 You can use this commands (or their MySQL equivalent) to gain some info manually
