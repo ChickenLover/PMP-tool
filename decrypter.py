@@ -62,7 +62,7 @@ def cli():
         plainpasswd = decrypt(args.password, args.key)
         print(plainpasswd)
     elif args.ciphertext:
-        plaintext = decrypt(args.ciphertext)
+        plaintext = decrypt(args.ciphertext, args.key)
         print(plaintext)
     elif args.file:
         try:
